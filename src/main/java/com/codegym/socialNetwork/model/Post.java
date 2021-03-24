@@ -12,6 +12,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String contextPost;
+
     private String imagePost;
 
     @Column(nullable = false)
@@ -19,9 +21,6 @@ public class Post {
 
     @Column(nullable = false)
     private int status;
-
-    @Column(nullable = false)
-    private String Image;
 
     @ManyToOne
     private AppUser appUser;
