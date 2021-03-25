@@ -13,10 +13,10 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @GetMapping("/register")
-    public ModelAndView register(){
-        ModelAndView modelAndView = new ModelAndView("register");
-        modelAndView.addObject("user", new AppUser());
-        return modelAndView;
-    }
+//    @GetMapping("/register")
+//    public ModelAndView register(){
+//        ModelAndView modelAndView = new ModelAndView("register");
+//        modelAndView.addObject("user", new AppUser());
+//        return modelAndView;
+//    }
 }

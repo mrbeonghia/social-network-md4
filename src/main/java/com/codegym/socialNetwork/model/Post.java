@@ -22,6 +22,7 @@ public class Post {
     @Column(nullable = false)
     private int status;
 
+
     @ManyToOne
     private AppUser appUser;
 }

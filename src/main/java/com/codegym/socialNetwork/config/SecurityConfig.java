@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/**").hasRole("USER")
                 .and()
                 .formLogin().successHandler(customSuccessHandler)
+                .loginPage("/login").permitAll().defaultSuccessUrl("/",true)
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .and().exceptionHandling().accessDeniedPage("/khongcoquyen");
