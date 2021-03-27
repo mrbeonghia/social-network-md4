@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Creative Colorlib SignUp Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link href="css/register/style-register.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- //web font -->
+</head>
+<body>
+<!-- main -->
+<div class="main-w3layouts wrapper">
+    <h1>REGISTER FORM</h1>
+    <th:block th:if="${message}">
+        <span th:text="${message}"></span>
+    </th:block>
+    <div class="main-agileinfo">
+        <div class="agileits-top">
+            <form method="post" th:object="${user}" action="/register">
+                <input class="text" type="text" name="username" th:field="${user.username}" placeholder="Username" required="">
+                <input class="text email" type="email" name="email" th:field="${user.email}"  placeholder="Email" required="">
+                <input class="text" type="password" name="password" th:field="${user.password}" placeholder="Password" required="">
+<!--                <input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">-->
+
+                <input type="submit" value="REGISTER">
+            </form>
+        </div>
+    </div>
+    <!-- copyright -->
+    <div class="colorlibcopy-agile">
+        <p>© 2021 Colorlib Signup Form. All rights reserved | Design by Nghia </p>
+    </div>
+    <!-- //copyright -->
+    <ul class="colorlib-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<!-- //main -->
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Register</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <fieldset>-->
+<!--        <legend>Register</legend>-->
+<!--&lt;!&ndash;        <th:block th:if="${message}">&ndash;&gt;-->
+<!--&lt;!&ndash;            <span th:text="${message}"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </th:block>&ndash;&gt;-->
+<!--        <form method="post" action="/register" th:object="${user}">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td><h4>Username</h4></td>-->
+<!--                    <td><input type="text" name="username" th:field="${user.username}" required></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><h4>Email</h4></td>-->
+<!--                    <td><input type="text" name="email" th:field="${user.email}" required></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><h4>Password</h4></td>-->
+<!--                    <td><input type="password" name="password" th:field="${user.password}" required></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td></td>-->
+<!--                    <td><input type="submit" value="REGISTER"></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </form>-->
+<!--    </fieldset>-->
+<!--</body>-->
+<!--</html>-->

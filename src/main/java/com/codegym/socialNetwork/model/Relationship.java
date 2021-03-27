@@ -4,21 +4,17 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
-public class Comment {
+public class Relationship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String content;
-
-    private Date dateComment;
-
+    private long id;
     @ManyToOne
-    private AppUser appUser;
-
-    @ManyToOne
-    private Post post;
+    private AppUser CurrentUser;
+    @OneToMany
+    private List<AppUser> Friend;
+    private Date createAt;
 }

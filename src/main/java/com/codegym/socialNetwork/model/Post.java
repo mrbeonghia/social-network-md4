@@ -9,10 +9,8 @@ import java.util.Date;
 @Data
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String contextPost;
 
     private String imagePost;
 
@@ -21,7 +19,6 @@ public class Post {
 
     @Column(nullable = false)
     private int status;
-
 
     @ManyToOne
     private AppUser appUser;

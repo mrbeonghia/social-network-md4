@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr>
+<br>
+<!--<h3>ALL USERS</h3>-->
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <td>Picture</td>-->
+<!--        <td>Name</td>-->
+<!--              <td>Send Friend Request</td>-->
+<!--    </tr>-->
+<!--    <tr th:each="user:${users}">-->
+<!--        <td><img th:src="@{/user/getImage(picUrl=${user.picUrl})}" width="50"></td>-->
+<!--        <td th:text="${user.firstname}"></td>-->
+<!--        <td th:text="${user.lastname}"></td>-->
+<!--&lt;!&ndash;        <td><a th:href="@{/sendRequest(id=${user.id})}"> Send </a></td>&ndash;&gt;-->
+<!--    </tr>-->
+<!--</table>-->
+<hr>
+<br>
+<h3>ALL REQUESTS</h3>
+<table border="1">
+    <tr>
+        <td>Picture</td>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Accept or Reject</td>
+    </tr>
+<!--    <tr th:each="request:${requests}">-->
+<!--        <td><img th:src="@{/user/getImage(picUrl=${request.from.picUrl})}" width="80"></td>-->
+<!--        <td th:text="${request.from.name}"></td>-->
+<!--        <td th:text="${request.from.surname}"></td>-->
+<!--        <td>-->
+<!--            <a th:href="@{/acceptOrReject(id=${request.from.id},action='accept')}"> Accept </a>&nbsp;&nbsp;-->
+<!--            <a th:href="@{/acceptOrReject(id=${request.from.id},action='reject')}"> Reject </a>-->
+<!--        </td>-->
+<!--    </tr>-->
+</table>
+<hr>
+<br>
+<h3>ALL FRIENDS</h3>
+<table border="1">
+    <tr>
+        <td>Picture</td>
+        <td>Name</td>
+        <td>Lastname</td>
+        <td>Delete</td>
+        <td>Message</td>
+    </tr>
+    <tr th:each="friend:${friends}">
+        <td><img th:src="@{/user/getImage(picUrl=${friend.to.imageUser})}" width="80"></td>
+        <td th:text="${friend.to.firstName}"></td>
+        <td th:text="${friend.to.lastName}"></td>
+        <td>
+            <a th:href="@{/friends/delete/{id}(id=${friend.to.id})}">Delete</a>
+        </td>
+        <td>
+            <a th:href="@{/messagePage(id=${friend.id})}"> Message </a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

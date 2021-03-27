@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 @Data
 public class AppUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
