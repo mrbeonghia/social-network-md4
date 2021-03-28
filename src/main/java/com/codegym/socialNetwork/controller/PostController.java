@@ -13,7 +13,7 @@ public class PostController {
     private IPostService postService;
 
     @GetMapping("/create")
-    public ModelAndView ShowFormCreate() {
+    public ModelAndView ShowFormCreate(@ModelAttribute Post post) {
         ModelAndView modelAndView = new ModelAndView("create");
         modelAndView.addObject("post", new Post());
         return modelAndView;
