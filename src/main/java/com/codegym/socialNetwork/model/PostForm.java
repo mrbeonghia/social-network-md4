@@ -1,22 +1,19 @@
 package com.codegym.socialNetwork.model;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 @Entity
-@Data
-public class Post implements Serializable {
+public class PostForm implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String contextPost;
+
+    private String imagePost;
 
     @Column(nullable = false)
     private Date createAt;
@@ -29,7 +26,4 @@ public class Post implements Serializable {
 
     @OneToMany
     private List<Comment> comments = new ArrayList<>();
-
-    @OneToMany
-    private Set<PostImage> postImage;
 }
