@@ -121,6 +121,17 @@
                                         <a href="#" class="comment-avatar pull-left"><img src="img/user.png" alt=""></a>
                                         <div class="comment-text">
                                             <p>Lets go, it's gonna be fun</p>
+
+
+                                            <!--/*@thymesVar id="comments" type="com.codegym.socialNetwork.model.Comment"*/-->
+                                            <th:block th:each="comment : ${comments}">
+                                                <tr>
+                                                    <!--/*@thymesVar id="comment" type="com.codegym.socialNetwork.model.Comment"*/-->
+                                                    <td th:text="${comment.context}"></td>
+                                                </tr>
+                                            </th:block>
+
+
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
