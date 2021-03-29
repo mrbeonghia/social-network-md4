@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment</title>
+</head>
+<body>
+<h1>Create comment</h1>
+<p>
+    <a href="/comment">Comment List</a>
+</p>
+<!--<th:block th:if="${message}">-->
+<!--    <p th:text="${message}"></p>-->
+<!--</th:block>-->
+<form th:action="@{/create-comment}" th:object="${comment}" method="post">
+    <table>
+        <tr>
+            <td>Comment:</td>
+            <td><input type="text" th:field="*{context}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create comment"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
