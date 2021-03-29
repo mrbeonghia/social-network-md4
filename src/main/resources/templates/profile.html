@@ -21,22 +21,6 @@
   <header>
     <div class="container">
       <img src="img/logo.png" class="logo" alt="">
-      <form class="form-inline">
-        <div class="form-group">
-          <label class="sr-only" for="exampleInputEmail3">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="exampleInputPassword3">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-default">Sign in</button><br>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Remember me
-          </label>
-        </div>
-      </form>
     </div>
   </header>
 
@@ -68,18 +52,17 @@
         <div class="row">
           <div class="col-md-8">
             <div class="profile">
-              <h1 class="page-header">Douglas Walter</h1>
+              <h2 class="page-header" th:text="${user.firstName}+${user.lastName}"></h2>
               <div class="row">
                 <div class="col-md-4">
-                  <img src="img/user.png" class="img-thumbnail" alt="">
+                  <img th:src="${'../'+user.getAvatar()}" width="100" class="img-thumbnail" alt="">
                 </div>
                 <div class="col-md-8">
                   <ul>
-                    <li><strong>First Name:</strong><h5 th:text="${user.firstName}" ></h5></li>
-                    <li><strong>Last Name:</strong><h5 th:text="${user.lastName}" ></h5></li>
-                    <li><strong>Email:</strong><h5 th:text="${user.email}" ></h5></li>
-                    <li><strong>Gender:</strong><h5 th:text="${user.gender}" ></h5></li>
-                    <li><strong>Phone number:</strong><h5 th:text="${user.phoneNumber}" ></h5></li>
+                    <li><strong>Email:</strong><h6 th:text="${user.email}" ></h6></li>
+                    <li><strong>Gender:</strong><h6 th:text="${user.gender}" ></h6></li>
+                    <li th:if="${user.dateOfBirth}"><strong>Gender:</strong><h6 th:text="${user.dateOfBirth}" ></h6></li>
+                    <li th:if="${user.phoneNumber}"><strong>Phone number:</strong><h6 th:text="${user.phoneNumber}" ></h6></li>
 
                   </ul>
                 </div>
@@ -118,14 +101,7 @@
               <div class="panel-body">
                 <ul>
                   <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                  <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
+
                 </ul>
                 <div class="clearfix"></div>
                 <a class="btn btn-primary" href="#">View All Friends</a>
@@ -137,7 +113,7 @@
               </div>
               <div class="panel-body">
                 <div class="group-item">
-                  <img src="img/group.png" alt="">
+                  <img src="/static/img/group.png" alt="">
                   <h4><a href="#" class="">Sample Group One</a></h4>
                   <p>This is a paragraph of intro text, or whatever I want to call it.</p>
                 </div>
@@ -175,3 +151,29 @@
     <script src="js/bootstrap.js"></script>
   </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<body>-->
+<!--<h3>View Customer</h3>-->
+<!--<p>-->
+<!--    <a th:href="@{/customers}">-->
+<!--        Back to customer list-->
+<!--    </a>-->
+<!--</p>-->
+<!--<div id="detail">-->
+<!--    <div >-->
+<!--        <label>First name:</label>-->
+<!--        <label th:text="${user.getFirstName()}"></label>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <label>Last name:</label>-->
+<!--        <label th:text="${user.getLastName()()}"></label>-->
+<!--    </div>-->
+<!--    <div >-->
+<!--        <label>Avatar:</label>-->
+<!--        <label th:src="${'D:/MODULE 04 PART 2/social_network/src/main/resources/static/img/'+user.getAvatar()}"></label>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

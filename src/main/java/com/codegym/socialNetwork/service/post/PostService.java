@@ -1,5 +1,6 @@
 package com.codegym.socialNetwork.service.post;
 
+import com.codegym.socialNetwork.model.AppUser;
 import com.codegym.socialNetwork.model.Post;
 import com.codegym.socialNetwork.repository.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,10 @@ public class PostService implements IPostService{
     @Override
     public void remove(Long id) {
         postRepo.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Post> findAllByUser(AppUser appUser) {
+        return postRepo.findAllByAppUserOrderById(appUser);
     }
 }

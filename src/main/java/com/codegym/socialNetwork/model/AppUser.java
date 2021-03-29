@@ -1,13 +1,16 @@
 package com.codegym.socialNetwork.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +35,21 @@ public class AppUser {
 
     private String gender;
 
-    @Column(columnDefinition = "TEXT")
-    private String ImageUser;
+    private Date dateOfBirth;
+
+    private String avatar;
 
     @ManyToOne
     private AppRole appRole;
+
+    public AppUser(String firstName, String lastName, @Email String email, @Pattern(regexp = "(^$|[0-9]{10,12})") String phoneNumber, String gender, Date dateOfBirth,String username, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.username = username;
+        this.password = password;
+    }
 }
