@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Comment</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dobble Social Network</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
 </head>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="members.html">Members</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="groups.html">Groups</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <!--                <li><a th:href="@{/users/{username}}">Profile</a></li>-->
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
 <body>
 <h1>Create comment</h1>
 <p>
-    <a href="/comment">Comment List</a>
+    <a href="/">Back to homepage</a>
 </p>
 <!--<th:block th:if="${message}">-->
 <!--    <p th:text="${message}"></p>-->
