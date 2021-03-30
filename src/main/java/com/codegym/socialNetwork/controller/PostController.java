@@ -2,6 +2,7 @@ package com.codegym.socialNetwork.controller;
 
 import com.codegym.socialNetwork.model.AppUser;
 import com.codegym.socialNetwork.model.Post;
+import com.codegym.socialNetwork.model.PostForm;
 import com.codegym.socialNetwork.service.post.IPostService;
 import com.codegym.socialNetwork.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +36,21 @@ public class PostController {
         return userService.getCurrentUser();
     }
 
+    @GetMapping("/posts/{id}")
+    public ResponseEntity<Iterable<Post>> listPost(@PathVariable Long id) {
+        AppUser appUser = userService.findById(id).get();
+        Iterable<Post> posts = postService.findAllByUser(appUser);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
+    }
+
+    @GetMapping("/create")
+    public ModelAndView ShowFormCreate() {
+        ModelAndView modelAndView = new ModelAndView("post/create");
+        modelAndView.addObject("posts", new Post());
+        return modelAndView;
+    }
+
+
     @PostMapping("/posts/create")
     public ResponseEntity<Post> addPost(@RequestBody Post post) {
         String context = post.getContext();
@@ -45,43 +62,33 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/posts/{id}")
-    public ResponseEntity<Iterable<Post>> listPost(@PathVariable Long id) {
-        AppUser appUser = userService.findById(id).get();
-        Iterable<Post> posts = postService.findAllByUser(appUser);
-        return new ResponseEntity<>(posts, HttpStatus.OK);
-    }
-
-    private void upLoadFile(@ModelAttribute Post post) throws IOException {
-        MultipartFile multipartFile = post.getImageMul();
-        String imageName = multipartFile.getOriginalFilename();
-        String resource = environment.getProperty("upload.path");
-        String newImage = resource + imageName;
-        FileCopyUtils.copy(multipartFile.getBytes(), new File(newImage));
-        post.setImagePost(imageName);
-    }
-
-    @GetMapping("/create")
-    public ModelAndView ShowFormCreate() {
-        ModelAndView modelAndView = new ModelAndView("post/create");
-        modelAndView.addObject("posts", new Post());
-        return modelAndView;
-    }
-
     @GetMapping("/edit/{id}")
     public ModelAndView showFormEdit(@RequestParam Long id) {
         ModelAndView modelAndView = new ModelAndView("post/edit");
         Optional<Post> post = postService.findById(id);
-        modelAndView.addObject("comment", post);
+        modelAndView.addObject("post", post);
         return modelAndView;
     }
 
-    @PostMapping("/edit/{id}")
-    public ModelAndView edit(@RequestParam Long id, @ModelAttribute Post post) throws IOException {
-        upLoadFile(post);
-        post.setId(id);
+    @PostMapping("/edit")
+    public RedirectView editPost(@ModelAttribute PostForm postForm) {
+        Post post = postService.findById(postForm.getId()).get();
+        post.setContextPost(postForm.getContextPost());
+        post.setImagePost(postForm.getImagePost());
+        post.setDatePost(postForm.getDatePost());
+        post.setStatus(postForm.getStatus());
+        post.setAppUser(postForm.getAppUser());
+        MultipartFile multipartFile = postForm.getImageMul();
+        String fileName = multipartFile.getOriginalFilename();
+        String fileUpload = environment.getProperty("upload.path").toString();
+        try {
+            FileCopyUtils.copy(postForm.getImageMul().getBytes(), new File(fileUpload + fileName));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        post.setImagePost(fileName);
         postService.save(post);
-        return new ModelAndView("redirect:/posts");
+        return new RedirectView("redirect:/posts");
     }
 
     @GetMapping("/delete")

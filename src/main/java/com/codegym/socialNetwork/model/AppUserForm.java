@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class AppUserForm {
+public class    AppUserForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

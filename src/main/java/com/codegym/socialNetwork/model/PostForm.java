@@ -11,7 +11,8 @@ import java.util.List;
 
 @Entity
 @Data
-public class Post implements Serializable {
+public class PostForm implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,15 +21,15 @@ public class Post implements Serializable {
 
     private String imagePost;
 
-//    @Column(nullable = false)
+    //    @Column(nullable = false)
     private Date datePost;
 
-//    @Column(nullable = false)
+    //    @Column(nullable = false)
     private int status;
-
-    private String context;
 
     @ManyToOne
     private AppUser appUser;
 
+    @Transient
+    private MultipartFile imageMul;
 }
